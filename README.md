@@ -1,54 +1,44 @@
-# POO Fundamentos
+# poo-fundamentos-java
 
-[![CI](https://github.com/Whiteherobot/poo-Unidad01-ZLMI/actions/workflows/ci.yml/badge.svg)](https://github.com/Whiteherobot/poo-Unidad01-ZLMI/actions/workflows/ci.yml)
-![Java](https://img.shields.io/badge/Java-17%2B-orange)
-![Maven](https://img.shields.io/badge/build-Maven-blue)
-![Licencia](https://img.shields.io/badge/licencia-MIT-green)
+[![CI](https://github.com/Whiteherobot/poo-fundamentos-java/actions/workflows/ci.yml/badge.svg)](https://github.com/Whiteherobot/poo-fundamentos-java/actions/workflows/ci.yml)
 
-Fundamentos de Programación Orientada a Objetos en Java, con cuatro clases de
-dominio (`Computadora`, `Estudiante`, `Gato` y `Moto`), validación de datos, un
-catálogo genérico y pruebas unitarias.
+Mi primer proyecto de Programación Orientada a Objetos en Java. Empezó en marzo
+de 2022 como la tarea de la Unidad 1: un "Hola mundo" y cuatro clases con
+atributos públicos. En 2026 lo retomé para dejarlo como un ejemplo ordenado de
+los fundamentos.
 
-## Conceptos que muestra
+## Qué hay
 
-| Concepto | Dónde |
-|---|---|
-| Encapsulamiento (atributos privados, getters, listas de solo lectura) | `modelo/*` |
-| Validación en el constructor e invariantes | `modelo/Validaciones.java` |
-| Interfaces y polimorfismo | `Describible`, que todas las clases implementan |
-| Identidad de objetos con `equals` y `hashCode` | `Moto`: la placa identifica la moto |
-| Genéricos con límite superior (`<T extends Describible>`) | `catalogo/Catalogo.java` |
-| Lambdas, `Predicate`, `Comparator` y `Optional` | `Catalogo.filtrar`, `ordenadosPor` y `buscarPrimero` |
-| Pruebas unitarias y parametrizadas (JUnit 5) | `src/test/java` |
+Cuatro clases de dominio con datos validados y algo de comportamiento:
 
-## Estructura
+- `Computadora`: componentes, descuentos y ampliación de almacenamiento.
+- `Estudiante`: calificación sobre 10 y si aprobó (desde 7).
+- `Gato`: edad equivalente en años humanos.
+- `Moto`: antigüedad, si es clásica, e identidad por placa (`equals`/`hashCode`).
+
+Todas implementan la interfaz `Describible`, y `Catalogo<T>` las agrupa para
+filtrar, ordenar y armar un reporte. `App` es una demo por consola que usa todo
+lo anterior.
 
 ```
 src/main/java/com/michicorp/poo/
-├── App.java              # Demo por consola
-├── catalogo/
-│   └── Catalogo.java     # Colección genérica: agregar, filtrar, ordenar, reportar
-└── modelo/
-    ├── Describible.java  # Interfaz común
-    ├── Validaciones.java # Reglas de validación compartidas
-    ├── Computadora.java  # Descuentos y ampliación de almacenamiento
-    ├── Estudiante.java   # Calificación sobre 10 y aprobación
-    ├── Gato.java         # Edad equivalente en años humanos
-    └── Moto.java         # Antigüedad, motos clásicas e identidad por placa
+├── App.java
+├── catalogo/Catalogo.java
+└── modelo/   Computadora, Estudiante, Gato, Moto, Describible, Validaciones
 ```
 
-## Cómo usarlo
+## Cómo correrlo
 
-Requisito: JDK 17 o superior. Maven no hace falta porque el proyecto incluye el wrapper.
+Necesitas JDK 17 o superior. Maven no hace falta porque el proyecto trae el wrapper.
 
 ```bash
 ./mvnw verify                                # compila y corre las pruebas
-java -jar target/poo-fundamentos-1.0.0.jar   # ejecuta la demo
+java -jar target/poo-fundamentos-1.0.0.jar   # demo
 ```
 
-En Windows se usa `mvnw.cmd` en lugar de `./mvnw`.
+En Windows se usa `mvnw.cmd`.
 
-Salida de la demo (extracto):
+Parte de la salida:
 
 ```
 Estudiantes (3)
@@ -63,16 +53,8 @@ Motos (2)
 ¿Se aceptó la placa repetida? no
 ```
 
-## Historia
-
-El proyecto empezó en marzo de 2022 como la primera tarea de POO (Unidad 1): un
-"Hola mundo" y cuatro clases con atributos públicos. En 2026 se refactorizó con
-encapsulamiento, validación, comportamiento propio en cada clase, un catálogo
-genérico, pruebas automatizadas e integración continua. El historial de commits
-conserva las dos etapas.
+Las pruebas están en `src/test/java` (JUnit 5) y corren en GitHub Actions con Java 17 y 21.
 
 ## Autor
 
-**Michael Lata** · [GitHub](https://github.com/Whiteherobot)
-
-Distribuido bajo la licencia MIT. Ver [LICENSE](LICENSE).
+Michael Lata ([@Whiteherobot](https://github.com/Whiteherobot)). Licencia MIT.
